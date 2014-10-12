@@ -1,13 +1,12 @@
 # obtaining data, pipe of grep command was used to restrict data loading to just a subset of the file
-filename <- "/Users/felipe/Downloads/household_power_consumption.txt"
-datos <- read.table(pipe('grep "^[1-2]/2/2007" "/Users/felipe/Downloads/household_power_consumption.txt"'),header=FALSE,sep=";",colClasses=c("character", "character", rep("numeric",7)),na="?")
+datos <- read.table(pipe('grep "^[1-2]/2/2007" "household_power_consumption.txt"'),header=FALSE,sep=";",colClasses=c("character", "character", rep("numeric",7)),na="?")
 # Names are restaured
 names(datos) <- c("Date","Time","Global_active_power","Global_reactive_power","Voltage","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3")
 #date time is dully typed and formatted
 datos$Time <- strptime(paste(datos$Date, datos$Time), "%d/%m/%Y %H:%M:%S")
 datos$Date <- as.Date(datos$Date, "%d/%m/%Y")
 #the plot
-png("/Users/felipe/Downloads/plot4.png", width=480, height=480)
+png("plot4.png", width=480, height=480)
 par(mfrow=c(2,2),mar = c(4, 4, 1, 2))
 
 # plotting Global Active Power & Voltage

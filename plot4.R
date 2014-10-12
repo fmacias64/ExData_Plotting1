@@ -7,7 +7,7 @@ datos$Time <- strptime(paste(datos$Date, datos$Time), "%d/%m/%Y %H:%M:%S")
 datos$Date <- as.Date(datos$Date, "%d/%m/%Y")
 #the plot
 png("plot4.png", width=480, height=480)
-par(mfrow=c(2,2),mar = c(4, 4, 1, 2))
+par(mfrow=c(2,2),mar = c(4, 4, 2, 2))
 
 # plotting Global Active Power & Voltage
 plot(datos$Time, datos$Global_active_power,type="l",xlab="",ylab="Global Active Power")
